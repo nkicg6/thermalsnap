@@ -21,3 +21,5 @@ This is the updated version of [[github.com/nkicg6/snakesnap][snakesnap]]. Snake
   This package is under development. Soon you will be able to =pip install thermalsnap= to use it. 
 
 * More coming soon
+
+please see http://python-textbok.readthedocs.io/en/latest/Introduction_to_GUI_Programming.html
