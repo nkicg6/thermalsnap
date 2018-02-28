@@ -10,11 +10,14 @@
 * Motivation
 This is the updated version of [[github.com/nkicg6/snakesnap][snakesnap]]. Snakesnap was first a simple command line script that controlled the Flir thermal camera in order to demonstrate what a snake would see using it's pit organs. It was developed as a quick demo for a Denver Science Museum project for kids by the Neuroscience program at University of Colorado Anschutz Medical Campus. Command line programs are easy to write but are virtually unusable if you are not familiar with programming languages. Since I wanted this project to be usable by everyone (and hopefully reused for other fun demos), I decided to make it into a GUI. My first attempt to write a GUI for snakesnap focused on the web browser via Flask, html, css, and javascript. This turned out to be fun but a lot more work than I anticipated-- especially since I wanted to interact with the file system and control GPIO pins-- something the browser is not designed for. 
 
-Thermalsnap uses the [[https://kivy.org/][Kivy]] GUI framework. I hope this will simplify both development (for me) and use (for you!). 
++Thermalsnap uses the [[https://kivy.org/][Kivy]] GUI framework. I hope this will simplify both development (for me) and use (for you!).+
+*Note* turns out that was not the simplest option...
+
+*tkinter it is!*
+
+
 
 * Installation
   This package is under development. Soon you will be able to =pip install thermalsnap= to use it. 
-
-Now, you will need to download from github then install Kivy (raspberry pi version) as described here https://kivy.org/docs/installation/installation-rpi.html
 
 * More coming soon
