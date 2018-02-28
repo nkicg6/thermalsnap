@@ -1,0 +1,34 @@
+# test kivy
+from kivy.config import Config
+from kivy.app import App
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.label import Label
+from kivy.uix.textinput import TextInput
+
+
+Config.set('graphics', 'fullscreen', 0)
+Config.set('graphics', 'borderless', 0)
+Config.set('graphics', 'show_cursor', 1)
+Config.write()
+
+class LoginScreen(GridLayout):
+
+    def __init__(self, **kwargs):
+        super(LoginScreen, self).__init__(**kwargs)
+        self.cols = 2
+        self.add_widget(Label(text="User Name"))
+        self.username = TextInput(multiline=False)
+        self.add_widget(self.username)
+        self.add_widget(Label(text="Password"))
+        self.password = TextInput(password=True, multiline=False)
+        self.add_widget(self.password)
+
+
+class thermalapp(App):
+
+    def build(self):
+        return LoginScreen()
+
+
+if __name__ == '__main__':
+    thermalapp().run()
