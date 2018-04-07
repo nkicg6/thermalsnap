@@ -16,6 +16,10 @@ class BaseApp(tk.Tk):
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
         self.frames = {}
+        self.geometry(winsize)
+        self.configure(background="white")
+        self.gmail = None
+        self.password = None
         for f in (LoginPage, MainPage):
             frame = f(container, self)
             self.frames[f] = frame
@@ -26,34 +30,40 @@ class BaseApp(tk.Tk):
         frame = self.frames[cont]
         frame.tkraise()
 
-        #self.container.geometry(winsize)
-        #self.master.configure(background = "white")
-        #self.startLoginWindow = LoginWindow(self)
-        #self.initialize(master)
-        #self.gmail = None
-        #self.password = None
 
 class LoginPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self,parent)
-        label = tk.Label(self, text="Welcome, please login with a gmail account below",
-                         font=LARGE_FONT)
-        label.pack(pady=10,padx=10)
-
+        # tk labels for stuff with entry points
+        mainlabel = tk.Label(self, text="Welcome, please login with a gmail account below",
+                         font=TITLE_FONT)
+        email = tk.Label(self, text="gmail username", font=LABEL_FONT)
+        password = tk.Label(self, text="gmail password", font=LABEL_FONT)
+        email_entry = tk.Entry(self)
+        password_entry = tk.Entry(self, show="*")
+        # tk buttons with callbacks
         login_button = ttk.Button(self, text="Login to snakesnap",
                             command=lambda: controller.show_frame(MainPage))
-        login_button.pack()
 
         quit_button = ttk.Button(self, text="Quit", command=self.quit)
-        quit_button.pack()
+        # positioning labels and entry points.
+        mainlabel.grid(row=0, columnspan=3, padx = 10, pady=10)
+        email.grid(row=1, padx=10, pady=10)
+        email_entry.grid(row=1, column=2, columnspan=2, padx=10, pady=10)
+        password.grid(row=2, padx=10, pady=10)
+        password_entry.grid(row=2, column=2, columnspan=2, padx=10, pady=10)
+        login_button.grid(row=3, column=1)
+        quit_button.grid(row=3, column=2)
+
+
 
 
 class MainPage(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        label = tk.Label(self, text="SnakeSnap v0.1-dev", font=LARGE_FONT)
+        label = tk.Label(self, text="SnakeSnap v0.1-dev", font=TITLE_FONT)
         label.pack(pady=10,padx=10)
 
         logout_button = ttk.Button(self, text="Logout",
@@ -113,8 +123,8 @@ class MainPage(tk.Frame):
 ## constants
 winsize = "600x500"
 loginwinsize = "300x250"
-LARGE_FONT =( "Verdana", 12)
-
+TITLE_FONT =( "Arial", 25)
+LABEL_FONT = ("Arial", 14)
 if __name__ == '__main__':
     #root = tk.Tk()
     #root.geometry('600x500')
