@@ -70,56 +70,6 @@ class MainPage(tk.Frame):
                             command=lambda: controller.show_frame(LoginPage))
         logout_button.pack()
 
-        #button2 = tk.Button(self, text="Page Two",
-        #                    command=lambda: controller.show_frame(PageTwo))
-        #button2.pack()
-
-
-    # def initialize(self, master):
-    #     LOGIN_MESSAGE = "Login with a gmail account below\n to send email or continue as a guest"
-    #     self.label = tk.Label(master, text="Welcome to SnakeSnap!", bg = "white",
-    #                           fg = "firebrick3", font = ("arial", 30, "bold"), anchor = "center").grid(row=1, column=1)
-    #     self.message = tk.Label(master,
-    #                             text= LOGIN_MESSAGE, bg = "white",
-    #                             font = ("arial", 18, "bold")).grid(row=2, column=1)
-    #     self.emailLabel = tk.Label(master, text = "Email", bg = "white", fg = "black", font = ("arial", 20, "bold")).grid(row=3)
-    #     self.emailLabel = tk.Label(master, text = "password", bg = "white", fg = "black", font = ("arial", 20, "bold")).grid(row=4)
-    #     self.email = tk.Entry(master).grid(row=3, column=1)
-    #     self.password = tk.Entry(master).grid(row=4, column=1)
-    #     self.close_button = tk.Button(master, text="Quit",
-    #                                   command=master.quit).grid(row=5, column=1)
-    #     self.login_button = tk.Button(master, text="Login").grid(row=5)
-
-
-# class LoginPage(tk.Frame):
-#     """inherits from base app. Called to start the app.
-#     login with a gmail username and password
-#     """
-
-#     def __init__(self,master, winsize, loginwinsize):
-#         master = BaseApp.__init__(self, master, winsize, loginwinsize)
-#         self.root_login = tk.Toplevel()
-#         self.hidden = True
-#         self.master.withdraw()
-#         self.root_login.focus_set()
-#         self.root_login.configure(background='grey92')
-#         self.root_login.resizable(width=False, height=False)
-#         self.root_login.geometry(loginwinsize)
-#         self.root_login.title('Login')
-#         self.log_btnFont = tkinter.font.Font(family="Lucida Grande", size=10)
-#         self.log_btnTxtColor = "grey22"
-#         self.log_btnTxtColor_active = "white"
-#         self.master.email = tk.Entry(self.root_login).grid(row=3, column=1)
-#         self.master.password = tk.Entry(self.root_login).grid(row=4, column=1)
-#         self.close_button = tk.Button(self.root_login, text="Quit",
-#                                       command=self.master.quit).grid(row=5, column=1)
-#         self.login_button = tk.Button(self.root_login, text="Login").grid(row=5, column=0)
-
-#     def login(self):
-#         """accept user input, reveal main window
-#         """
-#         pass
-
 ## constants
 winsize = "600x500"
 loginwinsize = "300x250"
