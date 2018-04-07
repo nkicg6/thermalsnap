@@ -2,17 +2,22 @@
 # main tkinter app
 
 import tkinter as tk
+import tkinter.font
+from tkinter import ttk, messagebox
 
 
-class WelcomePage:
+class BaseApp:
 
-    def __init__(self, master):
+    def __init__(self, master, winsize, loginwinsize):
         self.master = master
-        master.title("SnakeSnap v0.1-dev")
-        master.geometry("600x500")
-        master.configure(background = "white")
-        self.master = master
+        self.master.title("SnakeSnap v0.1-dev")
+        self.master.geometry(winsize)
+        self.master.configure(background = "white")
+        #self.startLoginWindow = LoginWindow(self)
         self.initialize(master)
+        self.gmail = None
+        self.password = None
+
 
     def initialize(self, master):
         LOGIN_MESSAGE = "Login with a gmail account below\n to send email or continue as a guest"
@@ -28,12 +33,40 @@ class WelcomePage:
         self.close_button = tk.Button(master, text="Quit",
                                       command=master.quit).grid(row=5, column=1)
         self.login_button = tk.Button(master, text="Login").grid(row=5)
+
     def greet(self):
         print("Greetings")
 
 
+
+class LoginWindow(BaseApp):
+
+    def __init__(self,master, winsize, loginwinsize):
+        BaseApp.__init__(self, master, winsize, loginwinsize)
+        self.root_login = tk.Toplevel()
+        self.master.withdraw()
+        self.root_login.configure(background='grey92')
+        self.root_login.resizable(width=False, height=False)
+        self.root_login.title('Login')
+        self.root_login.bind_all("<Mod2-q>", self.master.quit)
+        self.log_btnFont = tkinter.font.Font(family="Lucida Grande", size=10)
+        self.log_btnTxtColor = "grey22"
+        self.log_btnTxtColor_active = "white"
+        self.email = tk.Entry(master).grid(row=3, column=1)
+        self.password = tk.Entry(master).grid(row=4, column=1)
+        self.close_button = tk.Button(master, text="Quit",
+                                      command=master.quit).grid(row=5, column=1)
+        self.login_button = tk.Button(master, text="Login").grid(row=5)
+
+
+
+## constants
+winsize = "600x500"
+loginwinsize = "300x250"
+
 if __name__ == '__main__':
     root = tk.Tk()
     #root.geometry('600x500')
-    snakesnap = WelcomePage(root)
+    #snakesnap = BaseApp(root, winsize, loginwinsize)
+    snakesnap = LoginWindow(root, winsize, loginwinsize)
     root.mainloop()
