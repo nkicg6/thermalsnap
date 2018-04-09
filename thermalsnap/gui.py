@@ -1,15 +1,15 @@
 # gui
-
-import tkinter as tk
-import tkinter.font
-from tkinter import ttk, messagebox
+import os
+import Tkinter as tk
+import ttk
+#from Tkinter import ttk # had to change for python2 crap with opencv
 import thermalfunctions
 
 ## constants
 
-winsize = "600x500"
-loginwinsize = "300x250"
-TITLE_FONT =( "Arial", 25)
+winsize = "900x500+0+0"
+loginwinsize = "900x500+0+0"
+TITLE_FONT =("Arial", 25)
 LABEL_FONT = ("Arial", 14)
 
 class BaseApp(tk.Tk):
@@ -23,12 +23,13 @@ class BaseApp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
         self.shared_data = {
             "username" : tk.StringVar(),
+            "home_dir" : self.make_dir_structure(),
             "password" : tk.StringVar(),
             "message" : tk.StringVar(),
             # current picture user
             "picture_user_name": tk.StringVar(),
             # current image name
-            "current_image_name": tk.StringVar(),
+            "current_image_name": None,
             # current user email address
             "picture_user_email": tk.StringVar(),
         }
@@ -43,6 +44,19 @@ class BaseApp(tk.Tk):
             self.frames[f] = frame
             frame.grid(row=0, column=0, sticky="nsew")
         self.show_frame(LoginPage)
+
+    def make_dir_structure(self):
+        """makes the dir structure
+        """
+        top_level_dir = os.path.join(os.path.expanduser("~"),
+                                     "Desktop", "snakesnap-photos")
+        if not os.path.isdir(top_level_dir):
+            print("making dir {} structure for images".format(top_level_dir))
+            os.makedirs(top_level_dir)
+            return top_level_dir
+        else:
+            print("home directory {} exists.".format(top_level_dir))
+            return top_level_dir
 
 
     def show_frame(self, cont):
